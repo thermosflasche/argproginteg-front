@@ -3,42 +3,13 @@
         <div class="w3-container w3-margin-bottom">
             <h1 class="w3-serif w3-center w3-text-white">Bruno Tendler</h1>
         </div>
-        <button (click)="estudios.alternar()"
-            class="w3-button w3-round-large w3-white w3-margin-right">Estudios</button>
-        <button (click)="sobremi.alternar()"
-            class="w3-button w3-round-large w3-white w3-margin-right">Sobre mí</button>
-        <button (click)="contacto.alternar()"
-            class="w3-button w3-round-large w3-white">Contacto</button>
-    </div>
-</div>
-<modal #estudios>
-    <div class="w3-panel" *ngFor="let estudio of estudioJson">
-        <header class="w3-header">
-            <h3>{{estudio.titulo}}</h3>
-        </header>
-            <p>{{estudio.descripcion}}</p>
-        <footer class="w3-footer">
-            <p>{{estudio.anno}} &mdash; {{estudio.institucion}}</p>
-        </footer>
-    </div>
-</modal>
-<modal #sobremi>
-    <div class="w3-panel" *ngFor="let sobremi of sobremiJson">
-        <header class="w3-header w3-white">
-            <h3>{{sobremi.titulo}}</h3>
-        </header>
-        <div class="w3-container">
-            <p>{{sobremi.info}}</p>
+        <div class="w3-row">
+            <a [routerLink]="'./estudios'"
+                class="w3-center w3-col m4 w3-padding-small">Estudios</a>
+            <a [routerLink]="'./sobremi'"
+                class="w3-center w3-col m4 w3-padding-small">Sobre mí</a>
+            <a [routerLink]="'./contacto'"
+                class="w3-center w3-col m4 w3-padding-small">Contacto</a>
         </div>
     </div>
-</modal>
-<modal #contacto>
-    <ul class="w3-ul" style="list-style: square;">
-        <ng-template ngFor let-contacto [ngForOf]="contactoJson">
-            <li class="w3-padding-small" [ngSwitch]="tipo(contacto.contacto)">
-                <a [href]="contacto.contacto" *ngSwitchCase="'url'">{{contacto.nombre}}</a>
-                <ng-container *ngSwitchDefault>{{contacto.nombre}}: {{contacto.contacto}}</ng-container>
-            </li>
-        </ng-template>
-    </ul>
-</modal>
+</div>

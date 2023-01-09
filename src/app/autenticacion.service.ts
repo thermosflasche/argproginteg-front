@@ -7,7 +7,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class AutenticacionService {
 
-  url="http://127.0.0.1:8080/login"
+  url="https://argprog-backend.onrender.com/login"
   usuarioSujeto:BehaviorSubject<string>;
   constructor(private cliente:HttpClient) {
     this.usuarioSujeto = new BehaviorSubject<string>(localStorage.getItem("u")||'');

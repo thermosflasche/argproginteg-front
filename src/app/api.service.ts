@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class ApiService {
 
   constructor(private cliente:HttpClient) { }
-  url="http://localhost:8080/";
+  url="https://argprog-backend.onrender.com/";
 
   traer(recurso:string):Observable<any>{
     return this.cliente.get(this.url + recurso + "/traer");

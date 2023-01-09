@@ -9,3 +9,6 @@ body {
     color: white;
     background-color: black;
 }
+a {
+    text-decoration: none;
+}
