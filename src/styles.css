@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&family=Source+Serif+Pro&display=swap');
 @media (min-width: 50em){
     body{
         width: 50em;
@@ -9,6 +10,12 @@ body {
     color: white;
     background-color: black;
 }
+body, h1, h2, h3, h4, h5, h6{
+    font-family: 'Source Sans Pro'!important;
+}
 a {
     text-decoration: none;
+}
+.w3-serif{
+    font-family: 'Source Serif Pro', sans-serif!important;
 }

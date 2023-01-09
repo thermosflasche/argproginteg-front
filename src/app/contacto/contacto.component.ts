@@ -9,13 +9,17 @@ import { ApiService } from '../api.service';
 export class ContactoComponent implements OnInit{
   constructor(private api:ApiService){}
   json:any;
+
   tipo(valor: string): string {
-    if (valor.startsWith("+")) {
+    if (valor.search("@")>0){
+      return "email";
+    } else if (valor.startsWith("+")) {
       return "tel";
     } else if (valor.startsWith("http")) {
       return "url";
     } else return "";
   }
+  
   ngOnInit(): void {
     this.api.traer("contacto").subscribe(c => {
       this.json = c;
