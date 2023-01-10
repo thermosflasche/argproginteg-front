@@ -9,9 +9,8 @@ import { Observable } from 'rxjs';
 export class InterceptorService implements HttpInterceptor{
 
   constructor(private autenticacionServicio:AutenticacionService) { }
-
   intercept(peticion: HttpRequest<any>, siguiente:HttpHandler):Observable<HttpEvent<any>>{
-    var token=this.autenticacionServicio.token;
+    var token = localStorage.getItem("u");
     if (token){
       peticion=peticion.clone({
         setHeaders:{

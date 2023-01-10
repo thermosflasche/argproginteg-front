@@ -7,11 +7,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class AutenticacionService {
 
-  url="https://argprog-backend.onrender.com/login"
-  usuarioSujeto:BehaviorSubject<string>;
-  constructor(private cliente:HttpClient) {
-    this.usuarioSujeto = new BehaviorSubject<string>(localStorage.getItem("u")||'');
-  }
+  url="https://argprog-backend.onrender.com/login";
+  constructor(private cliente:HttpClient) {}
 
   // Retornar observable de la respuesta de la petición POST a la API,
   // con el fin de recibir de ella la cabecera "Authorization" con el JWT.
@@ -19,7 +16,4 @@ export class AutenticacionService {
     return this.cliente.post(this.url,credenciales, {observe: 'response'});
   }
 
-  get token(){
-    return this.usuarioSujeto.value;
-  }
 }
