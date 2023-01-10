@@ -12,7 +12,11 @@ export class IniciarSesionComponent implements OnInit{
   constructor(private autenticacionServicio:AutenticacionService,
     private builder:FormBuilder,
     private ruta:Router){}
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.autenticacionServicio.token||"".startsWith("Bearer ")){
+      this.ruta.navigate(["/portfolio"]);
+    }
+  }
 
   loginForm:FormGroup = this.builder.group({
     "email": ['',[Validators.required, Validators.email]],

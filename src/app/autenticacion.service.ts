@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +14,10 @@ export class AutenticacionService {
   // con el fin de recibir de ella la cabecera "Authorization" con el JWT.
   login(credenciales:any):Observable<any> {
     return this.cliente.post(this.url,credenciales, {observe: 'response'});
+  }
+
+  get token():any{
+    return localStorage.getItem("u");
   }
 
 }
