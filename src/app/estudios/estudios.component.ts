@@ -9,9 +9,10 @@ import { ApiService } from '../api.service';
 export class EstudiosComponent implements OnInit {
   constructor(private api: ApiService) { }
   json:any;
+  cargando:boolean=true;
   ngOnInit(): void {
-    this.api.traer("estudio").subscribe(e => {
-      this.json = e;
-    });
+    this.api.traer("estudio").subscribe({
+      next: e => { this.json = e; },
+      complete: () => { this.cargando = false }});
   }
 }

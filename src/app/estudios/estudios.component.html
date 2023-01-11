@@ -1,6 +1,9 @@
 <div style="background-color:#000;position:fixed;left:0;top:0;width:100%;height:100%;overflow:auto;z-index:-1"
 [routerLink]="'../'"></div>
 <div class="w3-center w3-animate-top"><a class="w3-button" [routerLink]="'../'">Volver</a></div>
+<div *ngIf="cargando" class="w3-display-middle">
+    <object data="assets/cargando.svg" type="image/svg+xml">Cargando...</object>
+</div>
 <div class="w3-container" [ngClass]="{'w3-animate-zoom': json}">
     <div class="w3-panel" *ngFor="let estudio of json">
         <header class="w3-header">

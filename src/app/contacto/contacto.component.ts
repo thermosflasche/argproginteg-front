@@ -9,6 +9,7 @@ import { ApiService } from '../api.service';
 export class ContactoComponent implements OnInit{
   constructor(private api:ApiService){}
   json:any;
+  cargando = true;
 
   tipo(valor: string): string {
     if (valor.search("@")>0){
@@ -21,8 +22,7 @@ export class ContactoComponent implements OnInit{
   }
   
   ngOnInit(): void {
-    this.api.traer("contacto").subscribe(c => {
-      this.json = c;
-    });
-  }
+    this.api.traer("contacto").subscribe({
+      next: c => { this.json = c },
+      complete: () => { this.cargando = false }})}
 }

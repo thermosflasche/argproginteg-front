@@ -9,9 +9,10 @@ import { ApiService } from '../api.service';
 export class SobreMiComponent implements OnInit{
   constructor(private api: ApiService) { }
   json:any;
+  cargando:boolean=true;
   ngOnInit(): void {
-    this.api.traer("sobremi").subscribe(s => {
-      this.json = s;
-    });
+    this.api.traer("sobremi").subscribe({
+      next: s => { this.json = s; },
+      complete: () => { this.cargando = false }});
   }
 }

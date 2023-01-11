@@ -12,6 +12,8 @@ export class IniciarSesionComponent implements OnInit{
   constructor(private autenticacionServicio:AutenticacionService,
     private builder:FormBuilder,
     private ruta:Router){}
+
+    cargando=false;
   ngOnInit(): void {
     if (this.autenticacionServicio.token||"".startsWith("Bearer ")){
       this.ruta.navigate(["/portfolio"]);
@@ -25,11 +27,13 @@ export class IniciarSesionComponent implements OnInit{
 
   onSubmit(e:Event){
     e.preventDefault;
-    this.autenticacionServicio.login(this.loginForm.value).subscribe((datos:Response)=>{
+    this.autenticacionServicio.login(this.loginForm.value).subscribe({
+      next: (datos:Response)=>{
       // console.log(datos.headers.get("Authorization"));
       localStorage.setItem("u",datos.headers.get("Authorization")||"");
-      this.ruta.navigate(['/portfolio']);
-    })
+      this.ruta.navigate(['/portfolio'])},
+      complete: () => {this.cargando = false}});
+    this.cargando = true;
   }
   get email(){
     return this.loginForm.get('email');
