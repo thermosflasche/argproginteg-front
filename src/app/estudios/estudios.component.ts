@@ -13,6 +13,10 @@ export class EstudiosComponent implements OnInit {
   ngOnInit(): void {
     this.api.traer("estudio").subscribe({
       next: e => { this.json = e; },
-      complete: () => { this.cargando = false }});
+      complete: () => { this.cargando = false },
+      error: (c:Response) => { if (c.status == 403){
+        localStorage.removeItem("u");
+        location.reload();
+      } }});
   }
 }

@@ -13,6 +13,9 @@ export class SobreMiComponent implements OnInit{
   ngOnInit(): void {
     this.api.traer("sobremi").subscribe({
       next: s => { this.json = s; },
-      complete: () => { this.cargando = false }});
-  }
+      complete: () => { this.cargando = false },
+      error: (c:Response) => { if (c.status == 403){
+        localStorage.removeItem("u");
+        location.reload();
+      }}})}
 }

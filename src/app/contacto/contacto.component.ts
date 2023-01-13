@@ -24,5 +24,9 @@ export class ContactoComponent implements OnInit{
   ngOnInit(): void {
     this.api.traer("contacto").subscribe({
       next: c => { this.json = c },
-      complete: () => { this.cargando = false }})}
+      complete: () => { this.cargando = false },
+    error: (c:Response) => { if (c.status == 403){
+      localStorage.removeItem("u");
+      location.reload();
+    }}})}
 }
