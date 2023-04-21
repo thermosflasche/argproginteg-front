@@ -13,7 +13,7 @@ export class IniciarSesionComponent implements OnInit{
     private builder:FormBuilder,
     private ruta:Router){}
 
-    cargando=false;
+    cargando = false;
   ngOnInit(): void {
     if (this.autenticacionServicio.token||"".startsWith("Bearer ")){
       this.ruta.navigate(["/portfolio"]);
@@ -32,7 +32,8 @@ export class IniciarSesionComponent implements OnInit{
       // console.log(datos.headers.get("Authorization"));
       localStorage.setItem("u",datos.headers.get("Authorization")||"");
       this.ruta.navigate(['/portfolio'])},
-      complete: () => {this.cargando = false}});
+      complete: () => {this.cargando = false},
+      error: () => {this.cargando = false;}});
     this.cargando = true;
   }
   get email(){

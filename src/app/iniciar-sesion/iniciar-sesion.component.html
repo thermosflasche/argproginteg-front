@@ -15,7 +15,7 @@
                     'w3-border-red': password?.errors && password?.touched,
                     'w3-border-green': !password?.errors && password?.touched}">
                 <div class="w3-center">
-                    <button class="w3-btn w3-black w3-hover-gray w3-padding" type="submit">Enviar</button>
+                    <button class="w3-btn w3-black w3-border w3-round w3-hover-gray w3-padding" type="submit" [disabled]="!email?.valid || !password?.valid">Enviar</button>
                 </div>
             </form>
             <div class="w3-center" *ngIf="cargando">
