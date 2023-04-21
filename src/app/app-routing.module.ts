@@ -14,7 +14,7 @@ const routes: Routes = [
     {path:'sobremi',component:SobreMiComponent},
     {path:'contacto',component:ContactoComponent},
     {path:'',component:PortfolioComponent,pathMatch:'full'}
-  ], canActivate:[() => inject(AutorizadoGuard).canActivate]},
+  ], canActivate:[() => inject(AutorizadoGuard).guardia]},
   {path:'login',component:IniciarSesionComponent},
   {path:'',redirectTo:'/login',pathMatch:'full'}
 ];
