@@ -1,6 +1,6 @@
 import { NgModule, inject } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import AutorizadoGuard from './autorizado.guard';
+import { estaAut } from './autorizado.guard';
 import { ContactoComponent } from './contacto/contacto.component';
 import { EstudiosComponent } from './estudios/estudios.component';
 import { IniciarSesionComponent } from './iniciar-sesion/iniciar-sesion.component';
@@ -14,7 +14,7 @@ const routes: Routes = [
     {path:'sobremi',component:SobreMiComponent},
     {path:'contacto',component:ContactoComponent},
     {path:'',component:PortfolioComponent,pathMatch:'full'}
-  ], canActivate:[AutorizadoGuard]},
+  ], canActivate:[estaAut]},
   {path:'login',component:IniciarSesionComponent},
   {path:'',redirectTo:'/login',pathMatch:'full'}
 ];
